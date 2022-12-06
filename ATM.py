@@ -1,18 +1,24 @@
+# Write the following classes with class variables, instance variable and
+# illustration the self variable
+#           1 (ii). ATM (to deposit and withdraw amount from ATM machine)
 class ATM:
-    amount=50000
+    def __init__(self):
+        self.amount = 50000
 
-    def deposit(self):
-        dep_amount=int(input("Enter the amount to be deposited: "))
-        ATM.amount=ATM.amount+dep_amount
-        print(f"Updated Amount is: {ATM.amount}")
-    def withdraw(self):
-        wit_amount=int(input("Enter the amount to be withdrawn: "))
-        if wit_amount>ATM.amount:
-            print("Insufficient balance!!")
+    def w(self):
+        withdraw = int(input("Enter the amount to withdraw: "))
+        if self.amount < withdraw:
+            print(f"Insufficient balance")
         else:
-            ATM.amount-=wit_amount
-            print(f"Remaining balance: {ATM.amount}")
+            self.amount = self.amount - withdraw
+            print(f"Remaining balance: {self.amount}")
 
-print(ATM.__dict__)
-ATM().withdraw()
-ATM().deposit()
+    def d(self):
+        deposit = int(input("Enter the amount to deposit: "))
+        self.amount = self.amount + deposit
+        print(f"Updated balance: {self.amount}")
+
+
+atm = ATM()
+atm.w()
+atm.d()
